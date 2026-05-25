@@ -1,0 +1,99 @@
+/* ═══════════════════════════════════════
+   VARIABLES & BASE
+   NutriPlanner — Design Tokens
+   ═══════════════════════════════════════ */
+
+:root {
+  /* Palette */
+  --sage:             #5C7A5A;
+  --sage-light:       #8FAE8D;
+  --sage-pale:        #EEF4ED;
+  --sage-dark:        #3A5238;
+  --cream:            #FAF8F3;
+  --cream-dark:       #F0EDE4;
+  --terracotta:       #C4694A;
+  --terracotta-light: #F0B49A;
+  --terracotta-pale:  #FBF0EB;
+  --gold:             #C8973A;
+  --gold-pale:        #FBF5E8;
+
+  /* Text */
+  --text-primary:   #1E2421;
+  --text-secondary: #4A5552;
+  --text-muted:     #8A9590;
+
+  /* UI */
+  --border:     #DDE5DC;
+  --white:      #FFFFFF;
+  --shadow-sm:  0 1px 3px rgba(30,36,33,0.06), 0 1px 2px rgba(30,36,33,0.04);
+  --shadow-md:  0 4px 12px rgba(30,36,33,0.08), 0 2px 6px rgba(30,36,33,0.06);
+  --shadow-lg:  0 12px 32px rgba(30,36,33,0.10), 0 4px 12px rgba(30,36,33,0.06);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+
+  /* Typography */
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+}
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--text-primary);
+  min-height: 100vh;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar        { width: 6px; height: 6px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  { background: var(--border); border-radius: 10px; }
+
+/* ── HELPERS ── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 20px 0;
+}
+
+.chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px; font-weight: 500;
+  background: var(--sage-pale);
+  color: var(--sage-dark);
+  border: 1px solid rgba(92,122,90,0.2);
+}
+
+.notice {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 12px 16px;
+  background: var(--gold-pale);
+  border: 1px solid rgba(200,151,58,0.25);
+  border-radius: var(--radius-md);
+  font-size: 13.5px;
+  color: #5A3D0A;
+  margin-bottom: 20px;
+}
+.notice svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; color: var(--gold); }
+
+/* ── PRINT ── */
+@media print {
+  .sidebar, .topbar-actions, .add-food-btn,
+  .food-actions, .modal-overlay, #toast,
+  .btn-sidebar, .week-nav .btn { display: none !important; }
+  .app-shell   { grid-template-columns: 1fr; }
+  .main        { overflow: visible; }
+  .meals-grid  { grid-template-columns: repeat(2, 1fr); }
+  body         { background: white; }
+  .food-item, .food-item:hover { background: #f9f9f9; border: 1px solid #ddd; }
+}
